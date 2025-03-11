@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Mar 11 12:28:30 GMT 2025","Tue Mar 11 12:28:36 GMT 2025","6421","API Suite","API Test","com.example.teamcity.api.BuildConfigurationTest","com.example.teamcity.api.BuildConfigurationTest","buildConfigurationTest","buildConfigurationTest",""
+"passed","Tue Mar 11 12:26:04 GMT 2025","Tue Mar 11 12:27:01 GMT 2025","56988","Surefire suite","Surefire test","com.example.teamcity.ui.SetupTeamCityTest","com.example.teamcity.ui.SetupTeamCityTest","startUpTest","startUpTest",""
+"passed","Tue Mar 11 12:28:05 GMT 2025","Tue Mar 11 12:28:15 GMT 2025","10374","Surefire suite","Surefire test","com.example.teamcity.api.SetupAgentTest","com.example.teamcity.api.SetupAgentTest","authorizeAgent","authorizeAgent",""
