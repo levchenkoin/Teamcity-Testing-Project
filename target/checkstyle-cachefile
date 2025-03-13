@@ -1,0 +1,15 @@
+#Thu Mar 13 17:17:30 CET 2025
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/models/Agent.java=1709766818840
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/models/BuildType.java=1709914384901
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/models/NewProjectDescription.java=1709914384909
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/models/Project.java=1709914384905
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/models/Projects.java=1709914384894
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/models/Role.java=1709914384888
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/models/User.java=1709908478961
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/requests/CheckedRequests.java=1709766818818
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/api/requests/UncheckedRequests.java=1709766818817
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/ui/elements/BuildTypeElement.java=1709766818851
+/Users/ILevchenko/AquaProjects/teamcity-testing-project/src/main/java/com/example/teamcity/ui/elements/ProjectElement.java=1709766818852
+configuration*?=B6F1218DED97AB9B4B8FC9248C6BE19DDE911C5A
+module-resource*?\:checkstyle-suppressions.xml=82AC256A5F5FF9900DAB9CD7E1353883F8149B7F
+module-resource*?\:checkstyle-xpath-suppressions.xml=F6126A60CE7758D462842665DF2DB3BB042A2ADB

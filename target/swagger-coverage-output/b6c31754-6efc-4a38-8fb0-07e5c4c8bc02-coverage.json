@@ -1,0 +1,31 @@
+{
+  "swagger" : "2.0",
+  "host" : "192.168.0.26",
+  "schemes" : [ "http" ],
+  "consumes" : [ "text/plain; charset=ISO-8859-1" ],
+  "produces" : [ "text/plain" ],
+  "paths" : {
+    "/app/rest/agents/id:1/authorized" : {
+      "put" : {
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "required" : false,
+          "x-example" : "*/*"
+        }, {
+          "name" : "Content-Type",
+          "in" : "header",
+          "required" : false,
+          "x-example" : "text/plain; charset=ISO-8859-1"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : { }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+<html class=" ua-js"><head>
+
+  <title>TeamCity is starting — TeamCity</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="application-name" content="TeamCity">
+  <meta name="description" content="Powerful Continuous Integration and Build Server">
+  <link href="/css/FontAwesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/css/main.css?v129421" type="text/css" rel="stylesheet">
+  <link href="/css/icons.css?v129421" type="text/css" rel="stylesheet">
+  <link href="/css/maintenance-initialPages-common.css?v129421" type="text/css" rel="stylesheet">
+  <link href="/maintenance/maintenance.css?v129421" type="text/css" rel="stylesheet">
+
+  <script type="text/javascript" src="/js/bs/ua.js"></script>
+  <script type="text/javascript" src="/js/ring/jquery.js"></script>
+  <script type="text/javascript" src="/js/ring/jquery-migrate.min.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.z-index.js"></script>
+  <script type="text/javascript" src="/maintenance/maintenance.js"></script>
+  <script type="text/javascript" src="/js/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/bs/bs-clipboard.js"></script>
+    <link href="/css/react-ui.css" type="text/css" rel="stylesheet">
+    <link href="/js/ring/loaderInline.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/js/ring/loaderInline.js"></script>
+
+    <script>
+      (function() {
+        const Theme = {
+          AUTO: 'auto',
+          DARK: 'dark',
+          LIGHT: 'light',
+        };
+
+        const darkClass = 'ring-ui-theme-dark';
+        const setTheme = (theme) => document.documentElement.classList.toggle(darkClass, theme === Theme.DARK);
+
+        const setGlobalTheme = (theme = Theme.AUTO) => {
+          if (theme === Theme.AUTO) {
+            const darkMatcher = window.matchMedia('(prefers-color-scheme: dark)');
+            const handler = () => setTheme(darkMatcher.matches ? Theme.DARK : Theme.LIGHT);
+            handler();
+            darkMatcher.addEventListener('change', handler);
+          } else {
+            setTheme(theme);
+          }
+        };
+
+        setGlobalTheme();
+      })();
+    </script>
+
+  <script type="text/javascript">
+    BS.Maintenance.webPrefix = "";
+    BS.Maintenance.stateRevision = 17;
+    BS.Maintenance.activeStage = true;
+  </script>
+
+</head>
+
+
+<body>
+
+
+  <div id="startScreen">
+
+    <div class="page-content-wrapper">
+      <div id="pageContent">
+        <span class="logo"></span>
+        <h1>TeamCity is starting</h1>
+
+        <p class="stage-status"><span class="icon-refresh icon-spin ring-loader-inline stage-status__icon"></span><span id="stageDescription" class="stage-status__description">Initializing the TeamCity Data Directory</span></p>
+          <p id="auto-refresh-note">This page will be reloaded automatically</p>
+
+      <noscript>
+        <div class="nojs-message">
+          Please enable JavaScript in your browser to access TeamCity.
+        </div>
+      </noscript>
+
+      <!-- THE PAGE CONTENT BEGIN -->
+        <div id="nestedPageContent"></div>
+
+      <!-- THE PAGE CONTENT END -->
+
+      <div id="footer2">
+        TeamCity 2023.05.4 (build 129421)
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <script type="text/javascript">
+    BS.Maintenance.scheduleCheckAndRefresh();
+
+    $(document).ready(function() {
+      $('.btn_enable_on_load').prop('disabled', false)
+    });
+  </script>
+
+
+
+</body></html>

@@ -1,0 +1,27 @@
+{
+  "swagger" : "2.0",
+  "host" : "192.168.0.26",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "text/plain" ],
+  "paths" : {
+    "/app/rest/users/username:test_GrEqwwOVmZ" : {
+      "delete" : {
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "required" : false,
+          "x-example" : "application/json, application/javascript, text/javascript, text/json"
+        }, {
+          "name" : "Content-Type",
+          "in" : "header",
+          "required" : false,
+          "x-example" : "application/json"
+        } ],
+        "responses" : {
+          "404" : { }
+        }
+      }
+    }
+  }
+}
