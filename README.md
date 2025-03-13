@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# alex_course
-=======
 TeamCity Testing Project
 
 📌 Description
@@ -25,4 +22,3 @@ Contributions are welcome! Please submit pull requests with detailed description
 
 📄 License
 This project is licensed under the MIT License.
->>>>>>> hometask-4
