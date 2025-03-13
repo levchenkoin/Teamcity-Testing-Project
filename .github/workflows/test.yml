@@ -103,9 +103,12 @@ jobs:
         # Не указываем clean, чтобы потом в итоговом репорте были и setup тесты
         run: ./mvnw test -Dtest=SetupAgentTest#authorizeAgent
 
-      - name: Run tests
-        # Указываем группу, чтобы еще раз не запустить тесты, которые использовались для сетапа сервера и агента
+      # Указываем группу, чтобы еще раз не запустить тесты, которые использовались для сетапа сервера и агента
+      - name: Run API tests
         run: ./mvnw test -DsuiteXmlFile=api-suite.xml
+
+      - name: Run UI tests
+        run: mvn test -DsuiteXmlFile=ui-suite.xml
 
       - name: Run swagger coverage
         # Создание репорта с покрытием API тестов, основанного на Swagger. Документация: https://github.com/viclovsky/swagger-coverage
