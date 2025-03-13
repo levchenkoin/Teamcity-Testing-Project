@@ -20,15 +20,26 @@ public class CheckedBuildConfig extends Request implements CrudInterface {
     }
 
     @Override
+<<<<<<< HEAD
     public Object get(String id) {
+=======
+    public BuildType get(String id) {
+>>>>>>> hometask-4
         return new UncheckedBuildConfig(spec).get(id)
                 .then().assertThat().statusCode(HttpStatus.SC_OK)
                 .extract().as(BuildType.class);
     }
 
     @Override
+<<<<<<< HEAD
     public Object update(Object obj) {
         return null;
+=======
+    public Object update(String id, Object obj) {
+        return new UncheckedBuildConfig(spec).update(id, obj)
+                .then().assertThat().statusCode(HttpStatus.SC_OK)
+                .extract().as(BuildType.class);
+>>>>>>> hometask-4
     }
 
     @Override

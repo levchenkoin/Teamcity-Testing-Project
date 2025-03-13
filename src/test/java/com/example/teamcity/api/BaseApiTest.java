@@ -1,4 +1,5 @@
 package com.example.teamcity.api;
+<<<<<<< HEAD
 
 import com.example.teamcity.api.generators.TestDataStorage;
 import com.example.teamcity.api.requests.CheckedRequests;
@@ -29,4 +30,7 @@ public class BaseApiTest extends BaseTest {
 
         testDataStorage.delete();
     }
+=======
+public class BaseApiTest extends BaseTest {
+>>>>>>> hometask-4
 }

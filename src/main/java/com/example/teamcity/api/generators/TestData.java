@@ -17,7 +17,11 @@ public class TestData {
     private BuildType buildType;
 
     public void delete() {
+<<<<<<< HEAD
         var spec = Specifications.getSpec().authSpec(user);
+=======
+        var spec = Specifications.getSpec().superUserSpec();
+>>>>>>> hometask-4
         new UncheckedProject(spec).delete(project.getId());
         new UncheckedUser(spec).delete(user.getUsername());
     }

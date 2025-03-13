@@ -28,7 +28,11 @@ public class CheckedUser extends Request implements CrudInterface {
     }
 
     @Override
+<<<<<<< HEAD
     public Object update(Object obj) {
+=======
+    public Object update(String id, Object obj) {
+>>>>>>> hometask-4
         return null;
     }
 
