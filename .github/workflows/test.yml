@@ -108,7 +108,11 @@ jobs:
         run: ./mvnw test -DsuiteXmlFile=api-suite.xml
 
       - name: Run UI tests
+<<<<<<< HEAD
         run: mvn test -DsuiteXmlFile=ui-suite.xml
+=======
+        run: ./mvnw test -DsuiteXmlFile=ui-suite.xml
+>>>>>>> 61dc2a122dfaed678fc02c4e068ebea8f1008179
 
       - name: Run swagger coverage
         # Создание репорта с покрытием API тестов, основанного на Swagger. Документация: https://github.com/viclovsky/swagger-coverage

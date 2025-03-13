@@ -43,7 +43,7 @@ public class CreateNewBuildConfigurationTest extends BaseUiTest{
                 .getHeader().shouldHave(Condition.text(testData.getBuildType().getName()));
 
         var buildConfig = new CheckedBuildConfig(Specifications.getSpec().authSpec(testData.getUser()))
-                .get(testData.getBuildType().getName());
+                 .get(testData.getBuildType().getName());
         softy.assertThat(buildConfig.getId()).isNotEmpty();
         softy.assertThat(testData.getBuildType().getName()).isEqualTo(buildConfig.getName());
 
