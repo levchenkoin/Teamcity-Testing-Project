@@ -1,6 +1,6 @@
-.allure
+.allure-results
 .idea
-target
-tmp
+target/
+tmp/
 *.iml
 .DS_Store 
