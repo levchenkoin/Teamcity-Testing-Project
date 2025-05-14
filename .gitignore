@@ -1,5 +1,5 @@
 allure-results/
-.idea
+.idea/
 target/
 tmp/
 *.iml
