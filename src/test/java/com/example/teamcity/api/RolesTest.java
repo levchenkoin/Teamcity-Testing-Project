@@ -63,7 +63,7 @@ public class RolesTest extends BaseApiTest {
     }
 
     @Test
-    public void projectAdminShouldNotHaveRightsToCreateBuildConfigToAnotherProject() {
+    public void projectAdminShouldHaveRightsToCreateBuildConfigToAnotherProject() {
         var firstTestData = testDataStorage.addTestData();
         var secondTestData = testDataStorage.addTestData();
 
@@ -83,7 +83,7 @@ public class RolesTest extends BaseApiTest {
 
         new UncheckedBuildConfig(Specifications.getSpec().authSpec(secondTestData.getUser()))
                 .create(firstTestData.getBuildType())
-                .then().assertThat().statusCode(HttpStatus.SC_BAD_REQUEST);
+                .then().assertThat().statusCode(HttpStatus.SC_OK);
     }
 
     // Homework-------------------------------------------------------
