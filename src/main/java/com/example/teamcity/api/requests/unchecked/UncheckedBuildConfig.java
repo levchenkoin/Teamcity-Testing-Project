@@ -24,17 +24,6 @@ public class UncheckedBuildConfig extends Request implements CrudInterface {
     }
 
     @Override
-<<<<<<< HEAD
-    public Response get(String id) {
-        return given()
-                .spec(spec)
-                .get(BUILD_CONFIG_ENDPOINT + "/id:" + id);
-    }
-
-    @Override
-    public Object update(Object obj) {
-        return null;
-=======
     public Response get(String name) {
         return given()
                 .spec(spec)
@@ -47,7 +36,6 @@ public class UncheckedBuildConfig extends Request implements CrudInterface {
                 .spec(spec)
                 .body(obj)
                 .get(BUILD_CONFIG_ENDPOINT + "/id:" + id);
->>>>>>> hometask-4
     }
 
     @Override
