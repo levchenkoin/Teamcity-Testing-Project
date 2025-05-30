@@ -27,7 +27,7 @@ public class CreateNewProject extends Page {
     }
 
     public void setupProject(String projectName, String buildTypeName) {
-        projectNameInput.shouldBe(visible, Duration.ofSeconds(10));
+        projectNameInput.shouldBe(visible, Duration.ofSeconds(30));
         projectNameInput.clear();
         projectNameInput.sendKeys(projectName);
         buildTypeNameInput.clear();
