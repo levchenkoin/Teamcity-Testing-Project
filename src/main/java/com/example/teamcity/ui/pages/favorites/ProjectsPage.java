@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.elements;
 
 public class ProjectsPage extends FavoritesPage {
     private static final String FAVORITE_PROJECTS_URL = "/favorite/projects";
-    private ElementsCollection subprojects = elements(Selectors.byClassStartsWith("Subproject__container"));
+    private ElementsCollection subprojects = elements(Selectors.byDataTest("subproject"));
 
     public ProjectsPage open() {
         Selenide.open(FAVORITE_PROJECTS_URL);
