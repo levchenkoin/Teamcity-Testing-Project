@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.elements;
 
 public class MainPage extends Page {
     private static final String PROJECT_URL = "/project/";
-    private ElementsCollection buildTypes = elements(Selectors.byClass("BuildsByBuildType__list--MI"));
+    private ElementsCollection buildTypes = elements(Selectors.byClassStartsWith("BuildsByBuildType__list--"));
     //private final ElementsCollection buildTypes = elements(Selectors.byClass("BuildTypes__item--UX"));
 
     public MainPage open(String projectName) {
