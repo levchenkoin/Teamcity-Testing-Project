@@ -4,6 +4,7 @@ import com.example.teamcity.api.generators.TestDataStorage;
 import com.example.teamcity.api.requests.CheckedRequests;
 import com.example.teamcity.api.requests.UncheckedRequests;
 import com.example.teamcity.api.spec.Specifications;
+import com.codeborne.selenide.Configuration;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -18,6 +19,7 @@ public class BaseTest {
     
     @BeforeMethod
     public void beforeTest() {
+        Configuration.timeout = 10000; // 10 секунд
         softy = new SoftAssertions();
         testDataStorage = TestDataStorage.getStorage();
     }
