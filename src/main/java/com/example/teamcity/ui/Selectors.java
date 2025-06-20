@@ -1,5 +1,7 @@
 package com.example.teamcity.ui;
 
+import org.openqa.selenium.By;
+
 import com.codeborne.selenide.selector.ByAttribute;
 
 public class Selectors {
@@ -17,6 +19,10 @@ public class Selectors {
 
     public static ByAttribute byClass(String value) {
         return new ByAttribute("class", value);
+    }
+
+    public static By byClassStartsWith(String classPrefix) {
+    return By.cssSelector("[class^='" + classPrefix + "']");
     }
 
     public static ByAttribute byRole(String value) { return new ByAttribute("role", value); }
