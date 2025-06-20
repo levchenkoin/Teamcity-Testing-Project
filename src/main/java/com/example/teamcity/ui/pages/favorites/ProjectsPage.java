@@ -2,6 +2,7 @@ package com.example.teamcity.ui.pages.favorites;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
+import java.time.Duration;
 import com.codeborne.selenide.Selenide;
 import com.example.teamcity.ui.Selectors;
 import com.example.teamcity.ui.elements.ProjectElement;
@@ -21,7 +22,7 @@ public class ProjectsPage extends FavoritesPage {
     }
 
     public List<ProjectElement> getSubprojects() {
-        subprojects.shouldHave(CollectionCondition.sizeGreaterThan(0));
+        subprojects.shouldHave(CollectionCondition.sizeGreaterThan(0), Duration.ofSeconds(20));
         return generatePageElements(subprojects, ProjectElement::new);
     }
 }
