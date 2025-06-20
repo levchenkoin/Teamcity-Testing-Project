@@ -1,5 +1,6 @@
 package com.example.teamcity.ui.pages.favorites;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.example.teamcity.ui.Selectors;
@@ -20,6 +21,7 @@ public class ProjectsPage extends FavoritesPage {
     }
 
     public List<ProjectElement> getSubprojects() {
+        subprojects.shouldHave(CollectionCondition.sizeGreaterThan(0));
         return generatePageElements(subprojects, ProjectElement::new);
     }
 }

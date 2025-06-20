@@ -19,7 +19,7 @@ public class BaseTest {
     
     @BeforeMethod
     public void beforeTest() {
-        Configuration.timeout = 30000; // 10 секунд
+        Configuration.timeout = 10000; // 10 секунд
         softy = new SoftAssertions();
         testDataStorage = TestDataStorage.getStorage();
     }
