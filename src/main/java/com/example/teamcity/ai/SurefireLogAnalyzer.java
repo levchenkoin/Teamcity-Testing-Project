@@ -52,7 +52,7 @@ public class SurefireLogAnalyzer {
 
     private static String sendToOpenAI(String apiKey, String logs) throws IOException {
         JSONObject json = new JSONObject();
-        json.put("model", "gpt-4");
+        json.put("model", "gpt-4.1-mini-2025-04-14");
         json.put("messages", new org.json.JSONArray()
             .put(new JSONObject().put("role", "system").put("content",
                 "Ты — AI-тестировщик. Проанализируй логи автотестов (Surefire Reports), определи нестабильные тесты, ошибки и возможные улучшения."))
