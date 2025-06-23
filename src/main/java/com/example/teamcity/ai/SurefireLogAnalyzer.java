@@ -77,15 +77,19 @@ public class SurefireLogAnalyzer {
 
     private static String sendToOpenAI(String apiKey, String logs) throws IOException {
         JSONObject json = new JSONObject();
-        JSONArray messages = new JSONArray()
+        json.put("model", "gpt-4o");
+        json.put("messages", new org.json.JSONArray()
             .put(new JSONObject().put("role", "system").put("content",
                 "Ты — AI-тестировщик. Проанализируй логи автотестов (Surefire Reports), определи нестабильные тесты, ошибки и возможные улучшения."))
-            .put(new JSONObject().put("role", "user").put("content", logs));
-
-        json.put("model", "gpt-4o");
-        json.put("messages", messages);
-
-        OkHttpClient client = new OkHttpClient();
+            .put(new JSONObject().put("role", "user").put("content", logs))
+        );
+    
+        // Настройка клиента с увеличенными таймаутами
+        OkHttpClient client = new OkHttpClient.Builder()
+            .callTimeout(java.time.Duration.ofSeconds(120))
+            .readTimeout(java.time.Duration.ofSeconds(120))
+            .build();
+    
         RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json; charset=utf-8"));
         Request request = new Request.Builder()
             .url(API_URL)
@@ -93,18 +97,35 @@ public class SurefireLogAnalyzer {
             .header("Content-Type", "application/json")
             .post(body)
             .build();
-
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Ошибка запроса: " + response);
-
-            String responseBody = response.body().string();
-            JSONObject result = new JSONObject(responseBody);
-            return result
-                .getJSONArray("choices")
-                .getJSONObject(0)
-                .getJSONObject("message")
-                .getString("content");
+    
+        int attempts = 0;
+        int maxAttempts = 2;
+    
+        while (attempts < maxAttempts) {
+            try (Response response = client.newCall(request).execute()) {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Ошибка запроса: " + response);
+                }
+    
+                String responseBody = response.body().string();
+                JSONObject result = new JSONObject(responseBody);
+                return result
+                    .getJSONArray("choices")
+                    .getJSONObject(0)
+                    .getJSONObject("message")
+                    .getString("content");
+    
+            } catch (java.net.SocketTimeoutException timeoutEx) {
+                attempts++;
+                if (attempts >= maxAttempts) {
+                    throw new IOException("Запрос к OpenAI завершился по таймауту после " + attempts + " попыток.", timeoutEx);
+                } else {
+                    System.out.println("⚠️ Timeout, повтор попытки запроса к OpenAI... (" + attempts + ")");
+                }
+            }
         }
+    
+        throw new IOException("Не удалось получить ответ от OpenAI после нескольких попыток.");
     }
 
     public static void sendToSlack(String message, String webhookUrl) throws IOException {
