@@ -34,11 +34,11 @@ public class SurefireLogAnalyzer {
 
             // Очищенный plain text для файла
             String plainText = aiAnalysis
-                .replaceAll("\\*\\*(.*?)\\*\\*", "$1")
-                .replaceAll("###\\s*", "")
-                .replaceAll("(?m)^- ", "- ")
-                .replaceAll("(?m)^> ", "")
-                .replaceAll("```", "");
+                .replaceAll("\\*\\*(.*?)\\*\\*", "$1")        // убираем жирный текст
+                .replaceAll("(?m)^#{1,6}\\s*", "")            // убираем все уровни заголовков
+                .replaceAll("(?m)^- ", "- ")                  // списки без изменений
+                .replaceAll("(?m)^>\\s*", "")                 // убираем цитаты
+                .replaceAll("```", "");                       // убираем код-блоки
 
             // Сохраняем в файл
             Files.write(Paths.get("ai-analysis.txt"), plainText.getBytes());
