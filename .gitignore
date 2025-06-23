@@ -5,3 +5,5 @@ tmp/
 *.iml
 .DS_Store 
 .vscode/
+# Config files
+config.properties
