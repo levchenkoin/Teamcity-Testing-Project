@@ -27,6 +27,8 @@
         <swagger-coverage-rest-assured.version>1.5.0</swagger-coverage-rest-assured.version>
         <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
         <allure-rest-assured.version>2.25.0</allure-rest-assured.version>
+        <okhttp.version>4.9.3</okhttp.version>
+        <json.version>20210307</json.version>
     </properties>
 
     <dependencies>
@@ -105,6 +107,17 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
             <version>${allure-rest-assured.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
         </dependency>
     </dependencies>
     <build>
