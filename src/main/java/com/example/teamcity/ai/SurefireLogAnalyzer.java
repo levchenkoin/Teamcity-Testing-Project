@@ -1,6 +1,7 @@
 package com.example.teamcity.ai;
 
 import okhttp3.*;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -25,18 +26,26 @@ public class SurefireLogAnalyzer {
 
             String aiAnalysis = sendToOpenAI(apiKey, logs);
 
-            // Добавляем ссылку на GitHub Actions run
+            // Slack-friendly формат
+            String slackFormatted = formatForSlack(aiAnalysis);
             if (runUrl != null && !runUrl.isEmpty()) {
-                aiAnalysis += "\n\n👉 [View this run on GitHub](" + runUrl + ")";
+                slackFormatted += "\n👉 <" + runUrl + "|View this run on GitHub>";
             }
 
-            System.out.println("🔍 AI-анализ логов:\n" + aiAnalysis);
+            // Очищенный plain text для файла
+            String plainText = aiAnalysis
+                .replaceAll("\\*\\*(.*?)\\*\\*", "$1")
+                .replaceAll("###\\s*", "")
+                .replaceAll("(?m)^- ", "- ")
+                .replaceAll("(?m)^> ", "")
+                .replaceAll("```", "");
 
-            Files.write(Paths.get("ai-analysis.txt"), aiAnalysis.getBytes());
+            // Сохраняем в файл
+            Files.write(Paths.get("ai-analysis.txt"), plainText.getBytes());
 
-            // Отправка в Slack
+            // Slack отправка
             if (slackWebhook != null && !slackWebhook.isEmpty()) {
-                sendToSlack(aiAnalysis, slackWebhook);
+                sendToSlack(slackFormatted, slackWebhook);
             } else {
                 System.out.println("⚠️ Slack webhook не задан в переменной SLACK_WEBHOOK_URL");
             }
@@ -68,12 +77,13 @@ public class SurefireLogAnalyzer {
 
     private static String sendToOpenAI(String apiKey, String logs) throws IOException {
         JSONObject json = new JSONObject();
-        json.put("model", "gpt-4o"); // можешь заменить на свою модель
-        json.put("messages", new org.json.JSONArray()
+        JSONArray messages = new JSONArray()
             .put(new JSONObject().put("role", "system").put("content",
                 "Ты — AI-тестировщик. Проанализируй логи автотестов (Surefire Reports), определи нестабильные тесты, ошибки и возможные улучшения."))
-            .put(new JSONObject().put("role", "user").put("content", logs))
-        );
+            .put(new JSONObject().put("role", "user").put("content", logs));
+
+        json.put("model", "gpt-4o");
+        json.put("messages", messages);
 
         OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json; charset=utf-8"));
@@ -114,5 +124,24 @@ public class SurefireLogAnalyzer {
                 throw new IOException("Ошибка отправки в Slack: " + response);
             }
         }
+    }
+
+    private static String formatForSlack(String text) {
+        String result = text;
+
+        // Жирный текст: **text** → *text*
+        result = result.replaceAll("\\*\\*(.*?)\\*\\*", "*$1*");
+
+        // Заголовки: ### Title → *Title*
+        result = result.replaceAll("###\\s*(.*?)\\n", "*$1*\n");
+
+        // Списки: - item → • item
+        result = result.replaceAll("(?m)^- ", "• ");
+
+        // Цитаты: > text → > text
+        result = result.replaceAll("(?m)^>\\s*", "> ");
+
+        // Код-блоки ``` → оставить как есть, Slack понимает их
+        return result;
     }
 }
