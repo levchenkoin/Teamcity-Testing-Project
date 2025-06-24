@@ -78,9 +78,20 @@ public class SurefireLogAnalyzer {
         JSONObject json = new JSONObject();
         json.put("model", "gpt-4o");
         json.put("messages", new org.json.JSONArray()
-            .put(new JSONObject().put("role", "system").put("content",
-                "Ты — AI-тестировщик. Проанализируй логи автотестов (Surefire Reports), определи нестабильные тесты, ошибки и возможные улучшения."))
-            .put(new JSONObject().put("role", "user").put("content", logs))
+            .put(new JSONObject()
+                .put("role", "system")
+                .put("content",
+                    "Ты — AI-тестировщик. Твоя задача — проанализировать логи автотестов (Surefire Reports) и предоставить отчёт по строго следующей структуре:\n\n" +
+                    "1. **Overview** – краткое описание, сколько тестов, какие классы, общая картина.\n" +
+                    "2. **Identified Issues** – список ошибок и исключений, с указанием, в каких тестах и почему они произошли.\n" +
+                    "3. **Flaky Tests** – если есть признаки нестабильности (например, NoSuchElementException), перечисли такие тесты и объясни, почему они могут быть нестабильными.\n" +
+                    "4. **Recommendations** – конкретные предложения по улучшению стабильности, читаемости, устойчивости тестов или инфраструктуры.\n\n" +
+                    "Не изменяй структуру отчёта. Используй заголовки и списки, чтобы он был удобен для чтения.")
+            )
+            .put(new JSONObject()
+                .put("role", "user")
+                .put("content", logs)
+            )
         );
     
         // Настройка клиента с увеличенными таймаутами
