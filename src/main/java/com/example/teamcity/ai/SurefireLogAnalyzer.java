@@ -81,13 +81,13 @@ public class SurefireLogAnalyzer {
             .put(new JSONObject()
                 .put("role", "system")
                 .put("content",
-                    "Ты — AI-тестировщик. Твоя задача — проанализировать логи автотестов (Surefire Reports) и предоставить отчёт по строго следующей структуре:\n\n" +
-                    "1. **Overview** – краткое описание, сколько тестов, какие классы, общая картина.\n" +
-                    "2. **Identified Issues** – список ошибок и исключений, с указанием, в каких тестах и почему они произошли.\n" +
-                    "3. **Flaky Tests** – если есть признаки нестабильности (например, NoSuchElementException), перечисли такие тесты и объясни, почему они могут быть нестабильными.\n" +
-                    "5. **Execution Time Analysis** – укажи тесты, которые выполнялись особенно долго, и выдвини возможные причины. Сравни время выполнения, если это возможно.\n\n" +
-                    "4. **Recommendations** – конкретные предложения по улучшению стабильности, читаемости, устойчивости тестов или инфраструктуры.\n\n" +
-                    "Не изменяй структуру отчёта. Используй заголовки и списки, чтобы он был удобен для чтения.")
+                    "You are an AI QA engineer. Your task is to analyze the automated test logs (Surefire Reports) and provide a report strictly following the structure below:\n\n" +
+                    "1. **Overview** – A brief summary including the number of tests, test classes involved, and the overall picture.\n" +
+                    "2. **Identified Issues** – A list of errors and exceptions, indicating in which tests they occurred and why.\n" +
+                    "3. **Flaky Tests** – If there are signs of instability (e.g., NoSuchElementException), list such tests and explain why they might be flaky.\n" +
+                    "4. **Execution Time Analysis** – Highlight tests that took significantly longer to execute, suggest possible reasons, and compare execution times if applicable.\n" +
+                    "5. **Recommendations** – Concrete suggestions to improve the stability, readability, and reliability of tests or infrastructure.\n\n" +
+                    "Do not change the structure of the report. Use headings and bullet points to ensure readability.")
             )
             .put(new JSONObject()
                 .put("role", "user")
