@@ -14,7 +14,7 @@ public class ProjectElement extends PageElement {
     public ProjectElement(SelenideElement element) {
         super(element);
 
-        this.header = element(Selectors.byClassStartsWith("ubprojects__limitWidth--"));
+        this.header = element(Selectors.byClassStartsWith("Subprojects__limitWidth--"));
         this.icon = findElement("svg");
     }
 }
