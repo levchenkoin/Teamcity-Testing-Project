@@ -1,5 +1,7 @@
 # TeamCity Testing Project
 
+[![TeamCity tests](https://github.com/levchenkoin/Teamcity-Testing-Project/actions/workflows/test.yml/badge.svg)](https://github.com/levchenkoin/Teamcity-Testing-Project/actions/workflows/test.yml)
+
 ## 📌 Description 
 
 This project contains automated tests for JetBrains TeamCity, aimed at validating its core functionality, API behavior, build execution, and system performance. The tests ensure that TeamCity operates correctly under various conditions.
